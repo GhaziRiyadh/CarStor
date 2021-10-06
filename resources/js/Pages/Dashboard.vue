@@ -26,5 +26,6 @@
             AppLayout,
             Welcome,
         },
+
     })
 </script>
