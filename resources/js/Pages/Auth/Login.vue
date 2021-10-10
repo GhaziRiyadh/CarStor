@@ -78,7 +78,7 @@
                     email: '',
                     password: '',
                     remember: false
-                })
+                }),
             }
         },
 
