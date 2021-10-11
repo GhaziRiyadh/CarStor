@@ -8,16 +8,28 @@
 
     <div :class="`absolute top-0 z-10 w-full h-full rounded-lg ${hover?'bg-textcolor bg-opacity-60 ':''} transition-all duration-500 ease-in-out`" ></div>
 
-    <div :class="`w-[135px] bottom-28 ${hover ? 'block cursor-pointer':'hidden'} right-24 left-24 transition-all duration-500 ease-in-out z-50 h-[33px] absolute rounded-md bg-white`">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div :class="`w-[135px] flex bottom-28 ${hover ? 'block cursor-pointer':'hidden'} right-24 left-24 transition-all duration-500 ease-in-out z-50 h-[33px] absolute rounded-md bg-white`">
+      <Link :href="route('Home')" class="w-1/3 h-full rounded-l-md hover:bg-primary">
+        <!-- <img class="flex items-center justify-center object-cover w-full h-full border-none" src="/images/cardImage.jpg" alt=""> -->
+      </Link>
+
+      <Link :href="route('Home')" class="w-1/3 h-full hover:bg-primary">
+        <!-- <img class="flex items-center justify-center object-cover w-full h-full border-none" src="/images/cardImage.jpg" alt=""> -->
+      </Link>
+
+      <Link :href="route('Home')" class="w-1/3 h-full rounded-r-md hover:bg-primary">
+        <!-- <img class="flex items-center justify-center object-cover w-full h-full border-none" src="/images/cardImage.jpg" alt=""> -->
+      </Link>
     </div>
   </div>
 </template>
 <script>
+import {Link } from "@inertiajs/inertia-vue3";
 export default {
   name: "hoverCard",
+  components:{
+    Link
+  },
   props: {
     card: {
       type: Object,

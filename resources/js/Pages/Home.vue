@@ -1,18 +1,18 @@
 <template>
-  <div class="flex w-screen h-screen bg-textcolor">
+  <div class="flex ">
     <div class="flex-col m-auto">
-      <hoverCard :card="card" />
     </div>
   </div>
 </template>
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
-import hoverCard from "@/components/hoverCard.vue";
+import layout from "./layouts/layout.vue";
 
 export default {
   name: "Home",
-  components: { Link, hoverCard },
+  components: { Link, layout },
+  layout:layout,
   data() {
     return {
       actives: {

@@ -1,19 +1,15 @@
 <template>
-  <div class="w-[67px] grid grid-rows-2 gap-2">
-    <Link
-      :href="link"
-      :class="`
-        ${active ? 'text-primary' : 'text-gray-500'}
-        text-lg text-center
-        w-full
-        transition
-        duration-300
-        ease-in-out
-        h-auto
-      `"
-      v-html="text"
-    >
-    </Link>
+  <div class="w-[67px] h-full
+   flex-row hover:border-b ">
+    <div class="flex items-center h-[48px]">
+        <Link
+            :href="link"
+            :class="` ${active ? 'text-primary ' : 'text-gray-500'} text-lg text-center w-full transition duration-300 ease-in-out m-auto `"
+            v-html="text"
+        >
+        </Link>
+    </div>
+
     <div
       :class="`
         ${active ? ' w-full ' : ' w-0 '}
@@ -33,7 +29,7 @@ export default {
   components: { Link },
   props: {
     link: String,
-    active: Boolean,
+    active: {type:Boolean , default:false},
     text: {
       type: String,
       default: "Home",
