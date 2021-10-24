@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[368px] w-[322px] bg-white rounded-lg border border-gray-300">
+  <Link class="block h-[368px] w-[322px] bg-white rounded-lg border border-gray-300">
     <div class="h-[218px] w-full rounded-tl-lg rounded-tr-lg">
       <img
         class="object-cover rounded-tl-lg rounded-tr-lg"
@@ -10,12 +10,12 @@
     <div class="w-full h-auto px-4 py-2">
       <div class="flex w-full text-textcolor">
         <p class="font-bold">
-          <span class="text-[16pt]">Morcedce</span>
+          <span class="text-[16pt]" v-text="card.title"></span>
         </p>
 
         <div class="ml-auto rtl:mr-auto">
           <div class="inline ltr:mr-[5px] rtl:ml-[5px] text-[10pt] relative">
-            $1000
+              <span v-text="`\$${card.oldPrice}`"></span>
             <div
               class="
                 absolute
@@ -27,7 +27,7 @@
               "
             ></div>
           </div>
-          <span class="text-[18pt] font-bold">$900</span>
+          <span class="text-[18pt] font-bold" v-text="`\$${card.newPrice}`"></span>
         </div>
       </div>
       <div class="w-full py-2">
@@ -37,18 +37,31 @@
         ></p>
       </div>
     </div>
-  </div>
+  </Link>
 </template>
 
 <script>
+import {Link} from "@inertiajs/inertia-vue3";
 export default {
   name: "carCard",
-  setup() {},
+  components:{
+      Link
+  },
   props: {
     card: {
       type: Object,
-      default: {},
+      default: {
+          image:"/images/cardImage.jpg",
+          desc:"Currently you can use icons in your projects as JavaScript library for browsers, React, Vue and Svelte components. Plug-ins for Sketch and Figma",
+          descImage:"defaultImage",
+          title:"Morcedce",
+          oldPrice:"1000",
+          newPrice:"900",
+      },
     },
+  },
+  created(){
+      console.log(this.card);
   },
 };
 </script>

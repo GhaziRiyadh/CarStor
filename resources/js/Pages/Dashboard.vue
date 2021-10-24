@@ -1,31 +1,61 @@
 <template>
-    <app-layout title="Dashboard">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <welcome />
-                </div>
-            </div>
-        </div>
+    <app-layout :Auth="Auth">
+        <header class="h-[80px] w-full flex items-center justify-center">
+            <tabs :tabsFun="tabsFun" :currerntTab="currentTabItem" :tabData="tabsData"/>
+        </header>
+        <section class="flex items-center justify-center">
+            <profile v-if="currentTabItem == 'Account info'"/>
+            <bankdata v-else-if=" currentTabItem == 'Bank info'"/>
+            <done v-else/>
+        </section>
     </app-layout>
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import Welcome from '@/Jetstream/Welcome.vue'
-
-    export default defineComponent({
-        components: {
+    import tabs from '@/components/tabs.vue';
+    import profile from './Profile/profile.vue';
+    import done from './Profile/done.vue';
+    import bankdata from './Profile/bankData.vue';
+    import AppLayout from '../Layouts/AppLayout.vue';
+    export default{
+        components:{
+            tabs,
+            profile,
+            done,
+            bankdata,
             AppLayout,
-            Welcome,
         },
-
-    })
+        props:{
+            classesLayout:String,
+            Auth:Boolean,
+            userImage:{
+                type:String,
+                default:'/images/person.jpg',
+            },
+            userName:{
+                type:String,
+                default:'Itsmy',
+            },
+        },
+        data(){
+            return{
+                currentTabItem:{
+                    type:String,
+                },
+                tabsData:{
+                    type:Array,
+                    default:['Account info' , 'Bank info' , 'Buying secceeded']
+                }
+            };
+        },
+        created(){
+            this.currentTabItem = "Account info";
+            this.tabsData = ['Account info' , 'Bank info' , 'Buying secceeded'];
+        },
+        methods:{
+            tabsFun(item){
+                this.currentTabItem = item;
+            }
+        }
+    }
 </script>

@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\User;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,19 +18,49 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
+Route::get('/', function (Request $request) {
+    $props = [
+        'Auth' => Auth::check(),
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
-    ]);
+    ];
+    return Inertia::render('Welcome', $props);
 })->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $props = [
+        'Auth' => Auth::check(),
+    ];
+    return Inertia::render('Dashboard',$props);
 })->name('dashboard');
 
 Route::get('Home', function () {
-    return Inertia::render('Home');
+    $props = [
+        'Auth' => Auth::check(),
+    ];
+    return Inertia::render('Home',$props);
 })->name("Home");
+
+Route::get('shopping', function () {
+    $props = [
+        'Auth' => Auth::check(),
+    ];
+    return Inertia::render('shopping',$props);
+})->name('shopping');
+
+Route::get('favorite', function () {
+    $props = [
+        'Auth' => Auth::check(),
+    ];
+    return Inertia::render('Profile/favorite',$props);
+})->name('favorite');
+
+Route::get('cart', function () {
+    $props = [
+        'Auth' => Auth::check(),
+    ];
+    return Inertia::render('Profile/cart', $props );
+})->name('cart');
+

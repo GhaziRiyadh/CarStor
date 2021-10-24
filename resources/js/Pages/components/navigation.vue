@@ -19,13 +19,14 @@
             <img class="object-cover h-[36px] w-[36px] m-auto rounded-full" :src="userImage" :alt="userName">
             <div :class="`absolute bg-white w-[200px] border border-gray-300 ${imageClick ? 'h-auto rounded-lg p-1' : ' h-0 p-0 border-none rounded-[0px]' } top-[44px] right-[46px] `">
                 <section :class="`w-full h-full border-b border-gray-300 rounded-t-lg ${imageClick ? '' : 'hidden' }`">
+
                      <Link
                         @mouseover="profileHover = true"
                         @mouseleave="profileHover = false"
                         :href="route('dashboard')"
                         :class="` bg-white text-textcolor ${imageClick ? 'flex p-[4px] my-0.5 items-center justify-between ' : 'hidden' } hover:bg-primary hover:text-white h-10 w-full rounded-md `"
                     >
-                        <img :src="userImage" class="object-cover w-[32px] h-[32px] border-none rounded-full"  />
+                        <img :src="userImage" class="object-cover w-auto h-full border-none"  />
                         <p :class="`w-full px-2 text-left ${profileHover ? 'font-bold' : '' }`">Profile</p>
                     </Link>
 
@@ -52,7 +53,7 @@
                 <Link
                     @mouseover="logoutHover = true"
                     @mouseleave="logoutHover = false"
-                    :href="route('logout')"
+                    @click="logout"
                     :class="` bg-white text-textcolor ${imageClick ? 'flex p-[4px] my-0.5 items-center justify-between ' : 'hidden' } hover:bg-primary hover:text-white h-10 w-full rounded-md `"
                 >
                     <Icon  class="object-cover w-auto h-full border-none" icon="ant-design:logout-outlined" :color="`${logoutHover?'#fff':'#1c304f'}`" />
@@ -110,6 +111,7 @@ export default {
             favoriteHover:Boolean,
             logoutHover:Boolean,
             profileHover:Boolean,
+
         };
     },
     created(){
@@ -124,6 +126,9 @@ export default {
       },
       activeFunction(cond){
           return cond;
+      },
+      logout() {
+          this.$inertia.post(route('logout'));
       },
     },
 

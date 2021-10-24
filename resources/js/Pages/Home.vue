@@ -1,17 +1,18 @@
 <template>
-  <div class="flex ">
+  <div class="flex h-screen">
     <div class="flex-col m-auto">
+      <CFcard/>
     </div>
   </div>
 </template>
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
-import layout from "./layouts/layout.vue";
-
+import layout from "@/Layouts/AppLayout.vue";
+import CFcard from "@/components/card.vue"
 export default {
   name: "Home",
-  components: { Link, layout },
+  components: { Link, layout , CFcard },
   layout:layout,
   data() {
     return {
