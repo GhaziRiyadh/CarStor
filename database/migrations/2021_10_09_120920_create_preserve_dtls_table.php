@@ -20,7 +20,7 @@ class CreatePreserveDtlsTable extends Migration
             $table->foreignId('cid')->on(Client::class)->onDelete('cascade');
             $table->date('datep');
             $table->char('vin',255);
-            $table->foreign('vin')->references('vin')->on(Car::class)->onDelete('cascade');
+            $table->foreign('vin')->on('cars')->references('vin')->onDelete('cascade');
             $table->double('price');
             $table->integer('remains');
             $table->text('note');

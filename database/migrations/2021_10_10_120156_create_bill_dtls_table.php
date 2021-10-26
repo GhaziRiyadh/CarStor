@@ -26,7 +26,7 @@ class CreateBillDtlsTable extends Migration
             $table->foreignId('cid')->on(Client::class)->onDelete('cascade');
             $table->foreignId('bid')->on(billMst::class)->onDelete('cascade');
             $table->char('vin',255);
-            $table->foreign('vin')->on(Car::class)->references('vin')->onDelete('cascade');
+            $table->foreign('vin')->on('cars')->references('vin')->onDelete('cascade');
             $table->timestamps();
         });
     }

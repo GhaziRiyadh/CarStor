@@ -17,7 +17,7 @@ class CreateCarPhotosTable extends Migration
         Schema::create('car_photos', function (Blueprint $table) {
             $table->id();
             $table->char('vin',255);
-            $table->foreign('vin')->on(Car::class)->references('vin')->onDelete('cascade');
+            $table->foreign('vin')->on('cars')->references('vin')->onDelete('cascade');
             $table->char('image' , 255);
             $table->timestamps();
         });
