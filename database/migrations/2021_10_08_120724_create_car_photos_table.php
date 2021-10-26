@@ -1,12 +1,11 @@
 <?php
 
-use App\Models\billMst;
 use App\Models\Car;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBillDtlsTable extends Migration
+class CreateCarPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,16 +14,11 @@ class CreateBillDtlsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bill_dtls', function (Blueprint $table) {
+        Schema::create('car_photos', function (Blueprint $table) {
             $table->id();
-            $table->double('uprice');
-            $table->timestamp('quantity');
-            $table->double('quantity_price');
-            $table->double('discount');
-            $table->float('tex');
-            $table->foreignId('cid')->on(Car::class)->onDelete('cascade');
-            $table->foreignId('bid')->on(billMst::class)->onDelete('cascade');
+            $table->char('vin',255);
             $table->foreign('vin')->on(Car::class)->references('vin')->onDelete('cascade');
+            $table->char('image' , 255);
             $table->timestamps();
         });
     }
@@ -36,6 +30,6 @@ class CreateBillDtlsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bill_dtls');
+        Schema::dropIfExists('car_photos');
     }
 }

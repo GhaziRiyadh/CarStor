@@ -1,11 +1,12 @@
 <?php
 
 use App\Models\Car;
+use App\Models\Client;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarDtlsTable extends Migration
+class CreateBillMstsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +15,12 @@ class CreateCarDtlsTable extends Migration
      */
     public function up()
     {
-        Schema::create('car_dtls', function (Blueprint $table) {
+        Schema::create('bill_msts', function (Blueprint $table) {
             $table->id();
-            $table->foreign('vin')->references('vin')->on(Car::class)->onDelete('cascade');
-            $table->text('detail');
+            $table->char('serial', 255);
+            $table->date('dateb');
+            $table->double('totalPrice');
+            $table->foreignId('cid')->on(Client::class)->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateCarDtlsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('car_dtls');
+        Schema::dropIfExists('bill_msts');
     }
 }

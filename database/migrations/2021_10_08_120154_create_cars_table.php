@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CarPhotos;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -30,7 +31,7 @@ class CreateCarsTable extends Migration
             $table->char('fual_type', 255);
             $table->integer('seats_num');
             $table->dateTime('date');
-            $table->foreignId('pid')->on('')->onDelete('cascade');
+            // $table->foreignId('photos_id')->on(CarPhotos::class)->onDelete('cascade');
             $table->timestamps();
         });
     }
