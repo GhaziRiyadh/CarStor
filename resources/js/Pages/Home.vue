@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen">
-    <div class="flex-col m-auto">
-      <CFcard/>
+    <div class="flex-col w-2/3 m-auto">
+      <slider />
     </div>
   </div>
 </template>
@@ -9,11 +9,12 @@
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
 import layout from "@/Layouts/AppLayout.vue";
-import CFcard from "@/components/card.vue"
+import CFcard from "@/components/card.vue";
+import slider from "@/components/slider.vue";
 export default {
   name: "Home",
-  components: { Link, layout , CFcard },
-  layout:layout,
+  components: { Link, layout, CFcard, slider },
+  layout: layout,
   data() {
     return {
       actives: {

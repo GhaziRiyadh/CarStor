@@ -1,10 +1,12 @@
 <template>
-  <Link class="block h-[368px] w-[322px] bg-white rounded-lg border border-gray-300">
+  <Link
+    class="block h-[368px] w-[322px] bg-white rounded-lg border border-gray-300"
+  >
     <div class="h-[218px] w-full rounded-tl-lg rounded-tr-lg">
       <img
         class="object-cover rounded-tl-lg rounded-tr-lg"
-        :src="card.image"
-        :alt="card.imagedesc"
+        :src="image"
+        :alt="card.model"
       />
     </div>
     <div class="w-full h-auto px-4 py-2">
@@ -15,7 +17,7 @@
 
         <div class="ml-auto rtl:mr-auto">
           <div class="inline ltr:mr-[5px] rtl:ml-[5px] text-[10pt] relative">
-              <span v-text="`\$${card.oldPrice}`"></span>
+            <span v-text="`\$${card.oldPrice}`"></span>
             <div
               class="
                 absolute
@@ -27,7 +29,10 @@
               "
             ></div>
           </div>
-          <span class="text-[18pt] font-bold" v-text="`\$${card.newPrice}`"></span>
+          <span
+            class="text-[18pt] font-bold"
+            v-text="`\$${card.newPrice}`"
+          ></span>
         </div>
       </div>
       <div class="w-full py-2">
@@ -41,27 +46,28 @@
 </template>
 
 <script>
-import {Link} from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 export default {
   name: "carCard",
-  components:{
-      Link
+  components: {
+    Link,
   },
   props: {
     card: {
       type: Object,
       default: {
-          image:"/images/cardImage.jpg",
-          desc:"Currently you can use icons in your projects as JavaScript library for browsers, React, Vue and Svelte components. Plug-ins for Sketch and Figma",
-          descImage:"defaultImage",
-          title:"Morcedce",
-          oldPrice:"1000",
-          newPrice:"900",
+        image: "/images/cardImage.jpg",
+        desc: "Currently you can use icons in your projects as JavaScript library for browsers, React, Vue and Svelte components. Plug-ins for Sketch and Figma",
+        descImage: "defaultImage",
+        title: "Morcedce",
+        oldPrice: "1000",
+        newPrice: "900",
       },
     },
+    image: String,
   },
-  created(){
-      console.log(this.card);
+  created() {
+    console.log(this.card);
   },
 };
 </script>

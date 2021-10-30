@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Routeing;
 use App\Models\User;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Application;
@@ -18,13 +19,9 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function (Request $request) {
+Route::get('/', function () {
     $props = [
         'Auth' => Auth::check(),
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ];
     return Inertia::render('Welcome', $props);
 })->name('home');
@@ -43,12 +40,11 @@ Route::get('Home', function () {
     return Inertia::render('Home',$props);
 })->name("Home");
 
-Route::get('shopping', function () {
-    $props = [
-        'Auth' => Auth::check(),
-    ];
-    return Inertia::render('shopping',$props);
-})->name('shopping');
+Route::prefix('shop')->group(function(){
+    Route::get('/', [ShoppingCountroller::class , 'shope'])->name('shopping');
+
+    Route::get('search/{word}' , [ShoppingCountroller::class , 'search'])->name('search');
+});
 
 Route::get('favorite', function () {
     $props = [

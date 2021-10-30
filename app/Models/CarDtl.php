@@ -13,10 +13,10 @@ class CarDtl extends Model
     /**
      * Get the car associated with the CarDtl
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function car(): HasOne
+    public function car()
     {
-        return $this->hasOne(Car::class, 'vin', 'vin');
+        return $this->belongsTo(Car::class);
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Car extends Model
 {
@@ -18,38 +19,29 @@ class Car extends Model
      */
     public function carPhotos(): HasMany
     {
-        return $this->hasMany(CarPhotos::class, 'photos_id', 'id');
+        return $this->hasMany(CarPhotos::class);
     }
 
     /**
      * Get the bill_dtl that owns the Car
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function bill_dtl(): BelongsTo
+    public function bill_dtl()
     {
-        return $this->belongsTo(bill_dtl::class, 'vin', 'vin');
+        return $this->hasOne(bill_dtl::class, 'vin', 'vin');
     }
 
     /**
      * Get the carDtl that owns the Car
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function carDtl(): BelongsTo
+    public function carDtl(): HasOne
     {
-        return $this->belongsTo(Car::class, 'vin', 'vin');
+        return $this->HasOne(Car::class);
     }
 
-    /**
-     * Get the carPhoto that owns the Car
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function carPhoto(): BelongsTo
-    {
-        return $this->belongsTo(CarPhotos::class, 'vin', 'vin');
-    }
 
     /**
      * Get the pres_dtl that owns the Car

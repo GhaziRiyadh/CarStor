@@ -42,6 +42,8 @@ class CreateNewUser implements CreatesNewUsers
         $passwordValRoles = Jetstream::hasTermsAndPrivacyPolicyFeature() ?
                             ['required', 'accepted'] : '';
 
+        $usernameValRole = ['required', 'string', 'max:255', 'unique:users'];
+
         $emailValRoles = ['required', 'string', 'email', 'max:255', 'unique:users'];
 
         $roles = [
@@ -49,10 +51,12 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $emailValRoles,
             'password' => $this->passwordRules(),
             'terms' => $passwordValRoles,
+            'username' => $usernameValRole,
         ];
 
         $newUser = [
             'name' => $input['name'],
+            'username' => $input['username'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ];
