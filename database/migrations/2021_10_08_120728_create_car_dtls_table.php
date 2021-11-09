@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Car;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +15,8 @@ class CreateCarDtlsTable extends Migration
     {
         Schema::create('car_dtls', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('car_id')->on(Car::class)->onDelete('cascade');
+            $table->bigInteger('detailable_id');
+            $table->string('detailable_type');
             $table->text('detail');
             $table->timestamps();
         });

@@ -7,12 +7,19 @@
         alt="logo"
       />
     </Link>
-    <div class="flex w-1/3 h-full m-auto">
-      <navItem class="mx-2 hover:text-primary" />
-      <navItem class="mx-2 hover:text-primary" />
-      <navItem class="mx-2 hover:text-primary" />
-      <navItem class="mx-2 hover:text-primary" />
-      <navItem class="mx-2 hover:text-primary" />
+    <div class="flex w-1/3 items-center justify-center h-full m-auto">
+      <navItem
+        :active="selfUrl == route('home') + '/'"
+        :link="route('home')"
+        text="Home"
+        class="mx-2 hover:text-primary"
+      />
+      <navItem
+        :text="`Shop`"
+        :link="route('shop')"
+        :active="selfUrl.includes('/shop')"
+        class="mx-2 hover:text-primary"
+      />
     </div>
     <Link v-if="!Auth" :href="route('login')" class="flex w-1/3 h-full ml-auto">
       <Icon
@@ -189,6 +196,7 @@ export default {
       favoriteHover: Boolean,
       logoutHover: Boolean,
       profileHover: Boolean,
+      selfUrl:String,
     };
   },
   created() {
@@ -200,6 +208,7 @@ export default {
       this.logoutHover =
       this.profileHover =
         false;
+      this.selfUrl = window.location.href;
   },
   methods: {
     hoverFun(action, activeItem) {

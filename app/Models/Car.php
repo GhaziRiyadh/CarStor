@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Car extends Model
 {
@@ -17,9 +15,14 @@ class Car extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function carPhotos(): HasMany
+    public function carPhotos()
     {
-        return $this->hasMany(CarPhotos::class);
+        return $this->morphMany(CarPhotos::class, 'photoable');
+    }
+
+    public function models()
+    {
+        return $this->hasOne(Model::class);
     }
 
     /**
@@ -29,7 +32,7 @@ class Car extends Model
      */
     public function bill_dtl()
     {
-        return $this->hasOne(bill_dtl::class, 'vin', 'vin');
+        return $this->morphOne(bill_dtl::class, 'desc');
     }
 
     /**
@@ -37,9 +40,9 @@ class Car extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function carDtl(): HasOne
+    public function carDtls()
     {
-        return $this->HasOne(Car::class);
+        return $this->morphOne(CarDtl::class, 'detailable');
     }
 
 

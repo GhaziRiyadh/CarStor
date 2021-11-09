@@ -14,13 +14,6 @@ export default {
 	    default: 100,
 	  },
 	},
-    created(){
-        const ww = window.screen.width;
-        const wh = window.screen.height;
-
-        console.log(wh , "height");
-        console.log(ww , "width");
-    }
 }
 </script>
 

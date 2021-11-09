@@ -18,8 +18,5 @@ export default {
         },
         btnFun:Function,
     },
-    created(){
-        console.log(this.btnWidth)
-    },
 }
 </script>

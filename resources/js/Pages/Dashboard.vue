@@ -1,22 +1,26 @@
 <template>
     <app-layout :Auth="Auth">
         <header class="h-[80px] w-full flex items-center justify-center">
-            <tabs :tabsFun="tabsFun" :currerntTab="currentTabItem" :tabData="tabsData"/>
+            <tabs
+                :tabsFun="tabsFun"
+                :currerntTab="currentTabItem"
+                :tabData="tabsData"
+            />
         </header>
         <section class="flex items-center justify-center">
-            <profile v-if="currentTabItem == 'Account info'"/>
-            <bankdata v-else-if=" currentTabItem == 'Bank info'"/>
-            <done v-else/>
+            <profile v-if="currentTabItem == 'Account info'" />
+            <bankdata v-else-if="currentTabItem == 'Bank info'" />
+            <done v-else />
         </section>
     </app-layout>
 </template>
 
 <script>
     import tabs from '@/components/tabs.vue';
-    import profile from './Profile/profile.vue';
-    import done from './Profile/done.vue';
-    import bankdata from './Profile/bankData.vue';
-    import AppLayout from '../Layouts/AppLayout.vue';
+    import profile from './Admin/Profile/profile.vue';
+    import done from './Admin/Profile/done.vue';
+    import bankdata from './Admin/Profile/bankData.vue';
+    import AppLayout from '@/Layouts/AppLayout.vue';
     export default{
         components:{
             tabs,

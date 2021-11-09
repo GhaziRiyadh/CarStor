@@ -1,62 +1,47 @@
 <?php
 
-use App\Http\Controllers\Routeing;
-use App\Models\User;
-use GuzzleHttp\Psr7\Request;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\Website\Car\ShowCarDetailsController as ShowCarDetails;
+use App\Http\Controllers\Website\Home\HomeController as Home;
+use App\Http\Controllers\Website\Shop\ShopController as Shop;
+use App\Http\Controllers\Website\User\CartController as Cart;
+use App\Http\Controllers\Website\User\FavoriteController as Favorite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    $props = [
-        'Auth' => Auth::check(),
-    ];
-    return Inertia::render('Welcome', $props);
-})->name('home');
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', [Home::class, 'index'])->name('home');
+    Route::post('getnexttab', [Home::class, 'getNextTabData']);
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $props = [
         'Auth' => Auth::check(),
     ];
-    return Inertia::render('Dashboard',$props);
+    return Inertia::render('Admin/Dashboard', $props);
 })->name('dashboard');
 
 Route::get('Home', function () {
     $props = [
         'Auth' => Auth::check(),
     ];
-    return Inertia::render('Home',$props);
+
+    return Inertia::render('Home', $props);
 })->name("Home");
 
-Route::prefix('shop')->group(function(){
-    Route::get('/', [ShoppingCountroller::class , 'shope'])->name('shopping');
+Route::prefix('shop')->group(function () {
+    Route::get('/', [Shop::class, 'index'])->name('shop');
 
-    Route::get('search/{word}' , [ShoppingCountroller::class , 'search'])->name('search');
+    Route::post('getcardata', [Shop::class, 'store'])->name('getcardata');
+
+    Route::get('search/{search}', [Shop::class, 'show'])->name('search');
 });
 
-Route::get('favorite', function () {
-    $props = [
-        'Auth' => Auth::check(),
-    ];
-    return Inertia::render('Profile/favorite',$props);
-})->name('favorite');
+Route::group(['prefix' => 'profile', 'middleware' => 'Auth'], function () {
 
-Route::get('cart', function () {
-    $props = [
-        'Auth' => Auth::check(),
-    ];
-    return Inertia::render('Profile/cart', $props );
-})->name('cart');
+    Route::get('favorite', [Favorite::class, 'index'])->name('favorite');
 
+    Route::get('cart', [Cart::class, 'index'])->name('cart');
+});
+
+Route::get('showCarDetails/{id}', [ShowCarDetails::class, 'show']);

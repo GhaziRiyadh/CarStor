@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class CarPhotos extends Model
 {
@@ -16,8 +14,8 @@ class CarPhotos extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function carPhotos(): BelongsTo
+    public function photoable()
     {
-        return $this->belongsTo(Car::class);
+        return $this->morphTo();
     }
 }

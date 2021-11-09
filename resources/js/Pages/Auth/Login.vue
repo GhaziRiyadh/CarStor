@@ -1,46 +1,84 @@
 <template>
-    <Head title="Log in" />
+	<Head title="Log in" />
 
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
+	<jet-authentication-card>
+		<template #logo>
+			<jet-authentication-card-logo />
+		</template>
 
-        <jet-validation-errors class="mb-4" />
+		<jet-validation-errors class="mb-4" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div>
+		<div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+			{{ status }}
+		</div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
-            </div>
+		<form @submit.prevent="submit">
+			<div>
+				<jet-label for="email" value="Email" />
+				<jet-input
+					id="email"
+					type="email"
+					class="mt-1 block w-full"
+					v-model="form.email"
+					required
+					autofocus
+				/>
+			</div>
 
-            <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
-            </div>
+			<div class="mt-4">
+				<jet-label for="password" value="Password" />
+				<jet-input
+					id="password"
+					type="password"
+					class="mt-1 block w-full"
+					v-model="form.password"
+					required
+					autocomplete="current-password"
+				/>
+			</div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
+			<div class="block mt-4">
+				<label class="flex items-center">
+					<jet-checkbox
+						name="remember"
+						v-model:checked="form.remember"
+					/>
+					<span class="ml-2 text-sm text-gray-600">Remember me</span>
+				</label>
+			</div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
-                </Link>
+			<div class="flex items-center justify-between mt-4">
+				<Link
+					v-if="canResetPassword"
+					:href="route('register')"
+					class="underline text-sm text-gray-600 hover:text-textcolor"
+				>
+					create account
+				</Link>
+				<div class="flex items-center justify-end">
+					<Link
+						v-if="canResetPassword"
+						:href="route('password.request')"
+						class="
+							underline
+							text-sm text-gray-600
+							hover:text-gray-900
+						"
+					>
+						Forgot your password?
+					</Link>
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </jet-button>
-            </div>
-        </form>
-    </jet-authentication-card>
+					<jet-button
+						class="ml-4"
+						:class="{ 'opacity-25': form.processing }"
+						:disabled="form.processing"
+					>
+						Log in
+					</jet-button>
+				</div>
+			</div>
+		</form>
+	</jet-authentication-card>
 </template>
 
 <script>

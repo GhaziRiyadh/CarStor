@@ -1,0 +1,11 @@
+Start
+
+Create Databse:
+  Database table:
+    ☐ car -> with photos and details:
+      ☐ 
+      ☐ 
+    ☐ photos:
+      ☐ image -> string.
+    ☐ details:
+      ☐ details -> string.

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class CarDtl extends Model
 {
@@ -15,8 +14,8 @@ class CarDtl extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function car()
+    public function detailable()
     {
-        return $this->belongsTo(Car::class);
+        return $this->morphTo(self::class);
     }
 }
