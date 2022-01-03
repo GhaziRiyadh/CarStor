@@ -2,7 +2,7 @@
   <app-layout :auth="Auth" >
       <div class="w-full flex items-center justify-center ">
         <div class="w-[80vw]">
-            <show-car-details/>
+            <show-car-details :addToCartFun="addToCart"/>
         </div>
       </div>
       <car-card/>

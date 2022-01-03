@@ -1,15 +1,13 @@
 <template>
-    <div class="grid grid-rows-7">
-        <div class="row-span-6">
-            <img class="object-cover w-full h-full rounded-md" :src="carImage" alt="">
+    <div class="grid grid-rows-7 w-full gap-2 mx-10">
+        <div class="row-span-6 ">
+            <img class="object-cover rounded-lg w-full h-[442px]" :src="carImage" alt="">
         </div>
-        <div class="row-span-1">
-            <Carousel dir="rtl" :autoplay="5000" :wrap-around="true" class="relative" mouseDrag="true">
-                <Slide v-for="(item,index) in sliderImage" :key="index" >
-                    <img :src="item.image" alt="">
-                </Slide>
-            </Carousel>
-        </div>
+        <Carousel dir="ltr" :settings="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true" class="row-span-1" mouseDrag="true">
+            <Slide v-for="(item,index) in sliderImage" :key="index" >
+                <img class="w-32 object-contain rounded-md" :src="item.image" alt="">
+            </Slide>
+        </Carousel>
     </div>
 </template>
 
@@ -30,10 +28,31 @@ export default {
         },
         carImage:{
             type:String,
-            default:'/images/default.png'
+            default:'/images/backProfile.jpg'
         }
 
-    }
+    },
+    data: () => ({
+    // carousel settings
+    settings: {
+      itemsToShow: 1,
+      snapAlign: 'center',
+    },
+    // breakpoints are mobile first
+    // any settings not specified will fallback to the carousel settings
+    breakpoints: {
+      // 700px and up
+      700: {
+        itemsToShow: 2,
+        snapAlign: 'center',
+      },
+      // 1024 and up
+      1024: {
+        itemsToShow: 3,
+        snapAlign: 'start',
+      },
+    },
+  }),
 }
 </script>
 

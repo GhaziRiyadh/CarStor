@@ -82,7 +82,6 @@ export default {
   },
   created(){
     this.card = this.carData.data
-    console.log(this.colorOptions.values())
   },
   data(){
     return {

@@ -5,6 +5,7 @@ use App\Http\Controllers\Website\Home\HomeController as Home;
 use App\Http\Controllers\Website\Shop\ShopController as Shop;
 use App\Http\Controllers\Website\User\CartController as Cart;
 use App\Http\Controllers\Website\User\FavoriteController as Favorite;
+use App\Http\Controllers\Website\UserDashboard\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,7 +15,7 @@ Route::group(['prefix' => '/'], function () {
     Route::post('getnexttab', [Home::class, 'getNextTabData']);
 });
 
-Route::get('/dashboard', [App\Http\Controllers\Website\UserDashboard\DashboardController::class , 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class , 'index'])->name('dashboard');
 
 Route::get('Home', function () {
     $props = [

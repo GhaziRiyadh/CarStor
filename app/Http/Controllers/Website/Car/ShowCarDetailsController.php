@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Car;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -15,11 +16,13 @@ class ShowCarDetailsController extends Controller
      * @param $id
      * @return Response
      */
-    public static function show(Car $carId): Response
+    public static function show( $carId): Response
     {
+        $carId = Car::with(['carPhotos','models','carDtls'])->findOrFail($carId);
 
         $props = [
             'data' => $carId,
+            'Auth' => Auth::check(),
         ];
 
         return Inertia::render('Website/Car/index', $props);
