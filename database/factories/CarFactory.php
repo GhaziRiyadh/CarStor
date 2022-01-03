@@ -19,19 +19,19 @@ class CarFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'vin' => $this->faker->unique()->isbn13() . $this->faker->unique()->text(5),
             'brand' => $this->faker->text(7),
             'color' => $this->faker->colorName(),
-            'year' => $this->faker->date('Y-m-d'),
+            'year' => $this->faker->date(),
             'style' => $this->faker->text(8),
             'gear' => $this->faker->numberBetween(4, 6),
             'gear_type' => $this->faker->text(5),
             'cylinder' => $this->faker->numberBetween(4, 6),
-            'cost' => $this->faker->priceNumberBetween(500, 10000),
-            'price' => $this->faker->priceNumberBetween(500, 10000),
+            'cost' => $this->faker->randomFloat(null, 100,1000),
+            'price' => $this->faker->randomFloat(null, 100,1000),
             'drive_type' => $this->faker->text(5),
             'fual_type' => $this->faker->text(25),
             'seats_num' => $this->faker->numberBetween(0, 10),

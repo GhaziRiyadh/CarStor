@@ -53,14 +53,8 @@
             </div>
             <div class="w-full py-2">
                 <p
-                    class="
-                        w-full
-                        mb-2
-                        text-gray-500
-                        overflow-hiddin
-                        text-[10pt]
-                    "
-                    v-html="card.car_dtls.detail"
+                    class=" w-full mb-2 text-gray-500 overflow-hidden text-[10pt] "
+                    v-html="getDesc(card.car_dtls.detail)"
                 ></p>
             </div>
         </div>
@@ -77,5 +71,10 @@ export default {
   props: {
     card:Object,
   },
+    methods:{
+      getDesc(item = ''){
+          return item.length < 70 ? item : item.slice(0,70) + '...';
+      }
+    }
 };
 </script>

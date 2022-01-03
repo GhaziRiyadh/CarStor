@@ -9,6 +9,12 @@ class CarPhotos extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'photoable_id',
+        'photoable_type',
+        'image',
+    ];
+
     /**
      * Get the carPhotos that owns the CarPhotos
      *

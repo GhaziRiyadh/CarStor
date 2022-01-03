@@ -17,9 +17,9 @@
 
 <script>
     import tabs from '@/components/tabs.vue';
-    import profile from './Admin/Profile/profile.vue';
-    import done from './Admin/Profile/done.vue';
-    import bankdata from './Admin/Profile/bankData.vue';
+    import profile from './Profile/profile.vue';
+    import done from './Done/done.vue';
+    import bankdata from './BankData/bankData.vue';
     import AppLayout from '@/Layouts/AppLayout.vue';
     export default{
         components:{
@@ -48,13 +48,13 @@
                 },
                 tabsData:{
                     type:Array,
-                    default:['Account info' , 'Bank info' , 'Buying secceeded']
+                    default:[{model:'Account info'} , {model:'Bank info'} , {model:'Buying secceeded'}]
                 }
             };
         },
         created(){
             this.currentTabItem = "Account info";
-            this.tabsData = ['Account info' , 'Bank info' , 'Buying secceeded'];
+            this.tabsData = [{model:'Account info'} , {model:'Bank info'} , {model:'Buying secceeded'}]
         },
         methods:{
             tabsFun(item){

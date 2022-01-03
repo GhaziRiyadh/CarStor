@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Website\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
+use Inertia\Response;
 use function PHPUnit\Framework\isEmpty;
 
 class ShopController extends Controller
@@ -15,9 +17,9 @@ class ShopController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $carData = Car::with('carPhotos', 'carDtls', 'models')->paginate(6);
         $props = [
@@ -31,34 +33,24 @@ class ShopController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
+     * @throws \Exception
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        $carData = [];
         if (isEmpty($request->search)) {
             $carData = Car::with('carPhotos', 'carDtls', 'models')->paginate(6);
         } else {
-            ddd($request);
+            $search = '%' . $request->search . '%';
             $carData = Car::with('carPhotos', 'carDtls', 'models')
-                ->where('vin', 'like',  $request->search, 'or')
-                ->where('brand', 'like',  $request->search, 'or')
-                ->where('year', 'like',  $request->search, 'or')
-                ->where('color', 'like',  $request->search, 'or')
-                ->where('style', 'like',  $request->search)
+                ->orWhere('vin', 'like', $search)
+                ->orWhere('brand', 'like', $search)
+                ->orWhere('year', 'like', $search)
+                ->orWhere('color', 'like', $search)
+                ->orWhere('style', 'like', $search)
                 ->paginate(12);
         }
         $props = [
@@ -71,18 +63,18 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $search
+     * @return Response
      */
-    public function show($search)
+    public function show($search): Response
     {
         $search = '%' . $search . '%';
         $cars = Car::with('carPhotos', 'carDtls', 'models')
-            ->where('vin', 'like', $search, 'or')
-            ->where('brand', 'like', $search, 'or')
-            ->where('year', 'like', $search, 'or')
-            ->where('color', 'like', $search, 'or')
-            ->where('style', 'like', $search)
+            ->orWhere('vin', 'like', $search)
+            ->orWhere('brand', 'like', $search)
+            ->orWhere('year', 'like', $search)
+            ->orWhere('color', 'like', $search)
+            ->orWhere('style', 'like', $search)
             ->paginate(12);
         $props = [
             'carData' => $cars,
@@ -91,39 +83,5 @@ class ShopController extends Controller
             'issearch' => $search,
         ];
         return Inertia::render('Website/Shop/index', $props);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

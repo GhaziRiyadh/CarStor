@@ -17,7 +17,7 @@ class CreateCarPhotosTable extends Migration
             $table->id();
             $table->bigInteger('photoable_id');
             $table->string('photoable_type');
-            $table->char('image', 255);
+            $table->text('image');
             $table->timestamps();
         });
     }

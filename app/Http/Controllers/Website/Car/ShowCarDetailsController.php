@@ -4,28 +4,35 @@ namespace App\Http\Controllers\Website\Car;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class ShowCarDetailsController extends Controller
 {
-    public static function show($id)
+    /**
+     * @param $id
+     * @return Response
+     */
+    public static function show(Car $carId): Response
     {
-        $data = Car::with('carPhotos', 'carDtls')->findOrFail($id);
 
         $props = [
-            'data' => $data,
+            'data' => $carId,
         ];
 
         return Inertia::render('Website/Car/index', $props);
     }
 
-    public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function store( Request $request): JsonResponse
     {
-        $role = [];
-        $this->validate($request, $role);
+        $request->validate([]);
 
-        $backUrl = [];
-        return response()->json($backUrl);
+        return response()->json([]);
     }
 }

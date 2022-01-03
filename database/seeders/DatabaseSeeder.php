@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $car = Car::factory()->has(Model::factory()->count(1))->hasCarPhotos(1)->hasCarDtls(1)->count(10)->create();
-        return $car;
+        return Car::factory()->has(Model::factory()->count(1))->hasCarPhotos(1)->hasCarDtls(1)->count(10)->create();
     }
 }

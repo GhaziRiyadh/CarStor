@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Car extends Model
 {
@@ -13,14 +16,14 @@ class Car extends Model
     /**
      * Get the carPhotos that owns the Car
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return MorphMany
      */
-    public function carPhotos()
+    public function carPhotos(): MorphMany
     {
         return $this->morphMany(CarPhotos::class, 'photoable');
     }
 
-    public function models()
+    public function models(): HasOne
     {
         return $this->hasOne(Model::class);
     }
@@ -28,9 +31,9 @@ class Car extends Model
     /**
      * Get the bill_dtl that owns the Car
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return MorphOne
      */
-    public function bill_dtl()
+    public function bill_dtl(): MorphOne
     {
         return $this->morphOne(bill_dtl::class, 'desc');
     }
@@ -38,9 +41,9 @@ class Car extends Model
     /**
      * Get the carDtl that owns the Car
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return MorphOne
      */
-    public function carDtls()
+    public function carDtls(): MorphOne
     {
         return $this->morphOne(CarDtl::class, 'detailable');
     }
@@ -49,9 +52,9 @@ class Car extends Model
     /**
      * Get the pres_dtl that owns the Car
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function preserv_dtl(): BelongsTo
+    public function preserve_dtl(): BelongsTo
     {
         return $this->belongsTo(PreserveDtl::class, 'vin', 'vin');
     }

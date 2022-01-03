@@ -6,8 +6,6 @@ import { InertiaProgress } from '@inertiajs/progress';
 import  VueGoogleMaps from '@fawmi/vue-google-maps'
 
 
-
-
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 const app = createInertiaApp({

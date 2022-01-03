@@ -14,12 +14,7 @@ Route::group(['prefix' => '/'], function () {
     Route::post('getnexttab', [Home::class, 'getNextTabData']);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $props = [
-        'Auth' => Auth::check(),
-    ];
-    return Inertia::render('Admin/Dashboard', $props);
-})->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\Website\UserDashboard\DashboardController::class , 'index'])->name('dashboard');
 
 Route::get('Home', function () {
     $props = [
@@ -43,5 +38,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'Auth'], function () {
 
     Route::get('cart', [Cart::class, 'index'])->name('cart');
 });
+
+
 
 Route::get('showCarDetails/{id}', [ShowCarDetails::class, 'show']);

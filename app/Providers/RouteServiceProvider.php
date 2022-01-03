@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Car;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -35,6 +36,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Route::bind('carId',fn($value) => Car::with(['carPhotos', 'carDtls'])->findOrFail($value) );
+
         $this->configureRateLimiting();
 
         $this->routes(function () {

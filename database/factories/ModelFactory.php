@@ -19,10 +19,10 @@ class ModelFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'model' => $this->faker->getModels(),
+            'model' => $this->faker->randomElement(['Toyota', 'Mercedes', 'BMW', 'Hindi', 'Honda', 'Vevo']),
         ];
     }
 }

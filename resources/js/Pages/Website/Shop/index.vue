@@ -67,9 +67,18 @@ export default {
     Auth: Boolean,
     carData: Array,
     pages:Number,
-    issearch:String,
-    colorOptions:Array,
-    brandOptions:Array,
+    issearch: {
+        type:String,
+        default:''
+    },
+    colorOptions: {
+        type:Array,
+        default:[]
+    },
+    brandOptions:{
+        type:Array,
+        default:[],
+    },
   },
   created(){
     this.card = this.carData.data

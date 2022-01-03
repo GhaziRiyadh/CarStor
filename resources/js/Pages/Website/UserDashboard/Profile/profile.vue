@@ -26,8 +26,8 @@
             </div>
 
             <section class="flex w-full h-2/3 ">
-                <div class="w-full border-gray-300 lg:h-full lg:w-1/3 lg:block lg:border-r">
-
+                <div class="flex items-center justify-center w-full border-gray-300 lg:h-full lg:w-1/3 lg:border-r">
+                    <user-info :user="userData" />
                 </div>
                 <div class="flex items-end justify-center w-full lg:h-full lg:w-2/3">
                     <div class="w-full lg:h-[350px] flex items-center justify-center">
@@ -41,7 +41,6 @@
                                 <input id="namePerson" class="px-2 py-1 text-base bg-transparent border rounded-md outline-none "/>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
@@ -52,11 +51,10 @@
     import layout from '@/Layouts/AppLayout.vue';
     import { Icon } from '@iconify/vue';
     import cameraFill from '@iconify-icons/bi/camera-fill';
+    import userInfo from '../../../../components/userInfo.vue';
 
     export default{
-        componenet:{
-            Icon,
-        },
+        components: { userInfo,Icon,layout },
         data() {
 		    return {
 			    icons: {
