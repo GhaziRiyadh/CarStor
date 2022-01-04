@@ -4,11 +4,6 @@
         <section class="flex items-center justify-center w-full h-auto mt-[24px]">
             <div class="w-[80vw] h-auto grid lg:grid-cols-3 grid-cols-1 gap-6">
                 <CFcard />
-                <CFcard />
-                <CFcard />
-                <CFcard />
-                <CFcard />
-                <CFcard />
             </div>
         </section>
 
@@ -29,6 +24,24 @@ export default {
         layout,
         pagination,
         CFcard,
+    },
+    props:{
+        cart:{
+            type:Array,
+            default:[],
+        },
+    },
+    created(){
+
+    },
+    data(){
+        return {
+            cartData:{},
+            done:false,
+            listData:{},
+            btnText:'',
+            
+        }
     },
     layout: layout,
 }

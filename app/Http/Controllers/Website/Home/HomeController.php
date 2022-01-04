@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Models\Model;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,7 @@ class HomeController extends Controller
         $firstModels = $tabs[0]['model'];
         $props = [
             'Auth' => Auth::check(),
+            'user' => User::with('photo')->find(Auth::id()),
             'cart' => $this->getCartData($firstModels),
             'hoverCart' => $this->getHoverCardData(),
             'tabData' => $tabs,
@@ -38,7 +40,7 @@ class HomeController extends Controller
 
     public function getCartData($model): array
     {
-        $cars = Car::with('carPhotos', 'carDtls', 'models')->get();
+        $cars = Car::with(['carPhotos', 'carDtls', 'models'])->get();
         $end = [];
         foreach ($cars->toArray() as $value) {
             if ($value['models']['model'] === $model)

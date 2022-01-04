@@ -10,6 +10,10 @@ use Inertia\Response;
 
 class FavoriteController extends Controller
 {
+    public function __construct() {
+        $this->middleware( ['auth:sanctum', 'verified']);
+    }
+    
     public function index(): Response
     {
         $props = [

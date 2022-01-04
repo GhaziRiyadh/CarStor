@@ -3,7 +3,7 @@
 
   <jet-authentication-card>
     <template #logo>
-      <jet-authentication-card-logo />
+      <jet-authentication-card-logo :photo="getUserImage" />
     </template>
 
     <jet-validation-errors class="mb-4" />
@@ -153,16 +153,19 @@ export default defineComponent({
         password: "",
         password_confirmation: "",
         terms: false,
+        photo:{},
       }),
     };
   },
 
   methods: {
+      getUserImage(v){
+          this.form.photo = v
+      },
     submit() {
-      this.form.post(this.route("register"), {
-        // onFinish: () => this.form.reset("password", "password_confirmation"),
-        onFinish:()=>{console.log('done')},
-      });
+    this.form.post(this.route("register"), {
+    // onFinish: () => this.form.reset("password", "password_confirmation"),
+    });
     },
   },
 });

@@ -8,7 +8,7 @@
             />
         </header>
         <section class="flex items-center justify-center">
-            <profile v-if="currentTabItem == 'Account info'" />
+            <profile :userInfo="user" v-if="currentTabItem == 'Account info'" />
             <bankdata v-else-if="currentTabItem == 'Bank info'" />
             <done v-else />
         </section>
@@ -39,6 +39,10 @@
             userName:{
                 type:String,
                 default:'Itsmy',
+            },
+            user:{
+                type:Object,
+                default:{}
             },
         },
         data(){

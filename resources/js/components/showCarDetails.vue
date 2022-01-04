@@ -18,7 +18,7 @@
                             <img src="/images/price.png" class="w-10 " alt=""> {{cost}}
                         </p>
                     </div>
-                    <div @click="addToCartFun" :class="` cursor-pointer border hover:border-none bg-white text-textcolor flex p-[4px] my-0.5 items-center justify-between  hover:bg-primary hover:text-white h-10 w-full rounded-md `">
+                    <div v-if='!hasCart' @click="addToCartFun" :class="` cursor-pointer border hover:border-none bg-white text-textcolor flex p-[4px] my-0.5 items-center justify-between  hover:bg-primary hover:text-white h-10 w-full rounded-md `">
                         <p :class="`w-full px-2 text-center hover:font-bold`">
                             add to cart
                         </p>
@@ -105,6 +105,10 @@ export default {
             type:Function,
             default:v => ''
         },
+        hasCart:{
+            type:Boolean,
+            default:false
+        }
     }
 }
 </script>

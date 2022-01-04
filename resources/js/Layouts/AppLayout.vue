@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-auto">
-        <navigation classes="sticky top-0 bg-white" :Auth="Auth"/>
+        <navigation :user="user" classes="sticky top-0 bg-white" :Auth="Auth"/>
         <slot/>
         <Footer/>
     </div>
@@ -13,13 +13,9 @@ export default {
     props:{
         classes:String,
         Auth:Boolean,
-        userImage:{
-            type:String,
-            default:'/images/person.jpg',
-        },
-        userName:{
-            type:String,
-            default:'Itsmy',
+        user:{
+            type:Object,
+            default:{},
         },
     },
 

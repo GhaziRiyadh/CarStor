@@ -10,6 +10,9 @@ use Inertia\Response;
 
 class CartController extends Controller
 {
+    public function __construct() {
+        $this->middleware( ['auth:sanctum', 'verified']);
+    }
     public function index(): Response
     {
         $props = [
@@ -21,5 +24,10 @@ class CartController extends Controller
     public function show($id)
     {
         ShowCarDetailsController::show($id);
+    }
+
+    public function addToCart($id = 1)
+    {
+        dd($id);
     }
 }

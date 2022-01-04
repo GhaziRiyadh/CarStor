@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -58,4 +60,9 @@ class Car extends Model
     {
         return $this->belongsTo(PreserveDtl::class, 'vin', 'vin');
     }
+
+    public function user(): BelongsToMany{
+        return $this->belongsToMany(User::class,'users_cars' , 'car_id' , 'user_id')->withTimestamps();
+    }
+
 }

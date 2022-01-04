@@ -67,6 +67,10 @@ export default {
     Auth: Boolean,
     carData: Array,
     pages:Number,
+    user:{
+        type:Object,
+        default:{}
+    },
     issearch: {
         type:String,
         default:''
@@ -82,11 +86,13 @@ export default {
   },
   created(){
     this.card = this.carData.data
+    this.userData = this.user
   },
   data(){
     return {
         card: [],
         currentpage:1,
+        userData:{},
     };
   },
   methods:{

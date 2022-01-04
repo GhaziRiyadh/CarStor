@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,7 @@ class ShopController extends Controller
         $props = [
             'Auth' => Auth::check(),
             'carData' => $carData,
+            'user' => User::with('photo')->find(Auth::id()),
             'pages' => $carData->lastPage(),
             'colorOptions' => Car::distinct('color')->get('color'),
             'brandOptions' => Car::distinct('brand')->get('brand'),
@@ -80,6 +82,7 @@ class ShopController extends Controller
             'carData' => $cars,
             'Auth' => Auth::check(),
             'pages' => $cars->lastPage(),
+            'user' => User::with('photo')->find(Auth::id()),
             'issearch' => $search,
         ];
         return Inertia::render('Website/Shop/index', $props);

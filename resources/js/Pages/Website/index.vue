@@ -3,7 +3,7 @@
   <div>
     <!-- Page header -->
     <div class="relative w-full mb-[24px]">
-      <navigation classes="absolute " :userImage="userImage" :userName="userName" :Auth="Auth" />
+      <navigation :user="user" classes="absolute " :Auth="Auth" />
       <div class="relative w-full h-screen">
 
         <div class="absolute z-40 w-full h-full bg-black bg-opacity-70"></div>
@@ -107,6 +107,10 @@ export default defineComponent({
     userName: {
       type: String,
       default: "It'sMy",
+    },
+    user:{
+        type:Object,
+        default:{}
     },
     cart:{type:Array},
     hoverCart:{type:Array,default:[]},

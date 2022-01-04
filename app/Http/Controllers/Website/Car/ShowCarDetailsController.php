@@ -18,11 +18,12 @@ class ShowCarDetailsController extends Controller
      */
     public static function show( $carId): Response
     {
-        $carId = Car::with(['carPhotos','models','carDtls'])->findOrFail($carId);
+        $carId = Car::with(['carPhotos', 'models', 'carDtls', 'user'])->findOrFail($carId);
 
         $props = [
             'data' => $carId,
             'Auth' => Auth::check(),
+            'cart' => $carId->user()->exists(Auth::id())
         ];
 
         return Inertia::render('Website/Car/index', $props);

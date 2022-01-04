@@ -2,9 +2,6 @@
 	<Head title="Log in" />
 
 	<jet-authentication-card>
-		<template #logo>
-			<jet-authentication-card-logo />
-		</template>
 
 		<jet-validation-errors class="mb-4" />
 
@@ -122,14 +119,16 @@
 
         methods: {
             submit() {
-                this.form
-                    .transform(data => ({
-                        ... data,
-                        remember: this.form.remember ? 'on' : ''
-                    }))
-                    .post(this.route('login'), {
-                        onFinish: () => this.form.reset('password'),
-                    })
+                this.form.post(this.route("login"), {
+                    // onFinish: () => this.form.reset("password", "password_confirmation"),
+                });
+                    // .transform(data => ({
+                    //     ... data,
+                    //     remember: this.form.remember ? 'on' : ''
+                    // }))
+                    // .post(this.route('login'), {
+                    //     onFinish: () => this.form.reset('password'),
+                    // })
             }
         }
     })

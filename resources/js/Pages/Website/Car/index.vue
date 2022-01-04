@@ -2,8 +2,8 @@
     <app-layout :Auth="Auth">
         <!-- filters -->
         <header class="relative w-full flex items-center justify-center">
-            <header class=" lg:w-[70vw]">
-                <show-car-details :images="data.car_photos" :carName="data.brand" :carDesc="data.car_dtls.detail" :CarAttributes="carAttributes" :addToCartFun="addToCart" />
+            <header class="w-[95vw]">
+                <show-car-details :hasCart="hasCart" :images="data.car_photos" :carName="data.brand" :carDesc="data.car_dtls.detail" :CarAttributes="carAttributes" :addToCartFun="addToCart" />
             </header>
         </header>
 
@@ -42,6 +42,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import ShowCarDetails from '../../../components/showCarDetails.vue';
 import attributeVue from '../../../components/attribute.vue';
 import { Inertia } from '@inertiajs/inertia';
+import axios from 'axios';
 export default {
   name: "shop",
   components: {
@@ -74,7 +75,8 @@ export default {
       return{
         //   pages:2,
         //   currentpage:1
-        carAttributes:new Object()
+        carAttributes:new Object(),
+        hasCart:false,
       }
   },
   methods:{
@@ -102,11 +104,16 @@ export default {
     //             });
     //     },
     addToCart(){
-        if(!this.Auth){
-            Inertia.get(route('login'));
-        }else{
-
-        }
+        axios.get('/add-to-cart/'+this.data.id)
+            .then(res => {
+                if(res.data.url === 'login'){
+                    window.location.replace(route(res.data.url))
+                }
+                else{
+                    this.hasCart = res.data.state
+                }
+            })
+            .catch();
     }
   }
 };

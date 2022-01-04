@@ -1,0 +1,372 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"req",
+				"required"
+			],
+			[
+				"pe",
+				"personImage"
+			],
+			[
+				"ca",
+				"catch()"
+			],
+			[
+				"user",
+				"userInfo"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<?php\n\nnamespace App\\Http\\Controllers;\n\nuse Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests;\nuse Illuminate\\Foundation\\Bus\\DispatchesJobs;\nuse Illuminate\\Foundation\\Validation\\ValidatesRequests;\nuse Illuminate\\Routing\\Controller as BaseController;\n\nclass Controller extends BaseController\n{\n    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;\n}\n",
+			"file": "app/Http/Controllers/Controller.php",
+			"file_size": 0,
+			"file_write_time": 132857899793760434,
+			"redo_stack":
+			[
+				[
+					32,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABpAQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				]
+			],
+			"settings":
+			{
+				"buffer_size": 361,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "/home/riyadh/.config/sublime-text/Packages/phpfmt/phpfmt.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 88,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					1,
+					"paste",
+					null,
+					"AgAAABsAAAAAAAAAKgAAAAAAAAAAAAAAKgAAAAAAAAAqAAAAAAAAABIAAAAvdXNyL2xvY2FsL2Jpbi9waHA",
+					"AQAAAAAAAAABAAAALQAAAAAAAAAbAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"php",
+				"Snippet: phpdoc class"
+			],
+			[
+				"Snippet: ",
+				"Snippet: fn …"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pe",
+				"Package Control: Enable Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/media/riyadh/univ/Projects/CarStor/CarStorWithVuejs",
+		"/media/riyadh/univ/Projects/CarStor/CarStorWithVuejs/app",
+		"/media/riyadh/univ/Projects/CarStor/CarStorWithVuejs/app/Http",
+		"/media/riyadh/univ/Projects/CarStor/CarStorWithVuejs/app/Http/Controllers"
+	],
+	"file_history":
+	[
+		"/home/riyadh/.config/sublime-text/Packages/phpfmt/phpfmt.sublime-settings",
+		"/home/riyadh/.config/sublime-text/Packages/User/phpfmt.sublime-settings",
+		"/home/riyadh/.config/sublime-text/Packages/User/PHPTools.sublime-settings",
+		"/media/riyadh/univ/Projects/CarStor/CarStorWithVuejs/app/Http/Controllers/Controller.php",
+		"/home/riyadh/.config/sublime-text/Packages/PHPTools/PHPTools.sublime-settings",
+		"/media/riyadh/univ/Projects/CarStor/CarStorWithVuejs/webpack.config.js",
+		"/media/riyadh/univ/Projects/CarStor/CarStorWithVuejs/node_modules/@iconify-icons/ant-design/profile.js",
+		"/media/riyadh/univ/tamamm/GGI/MHD/app/Http/Controllers/Admin/Team/.fuse_hidden00007f1f00000001",
+		"/media/riyadh/univ/tamamm/GGI/MHD/app/Http/Controllers/Admin/Team/OurTeamController.php",
+		"/home/riyadh/.config/sublime-text/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 45.0
+	},
+	"find_in_files":
+	{
+		"height": 197.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/media/riyadh/univ/Projects/CarStor/CarStorWithVuejs"
+		}
+	],
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/Http/Controllers/Controller.php",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 361,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								38,
+								38
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/riyadh/.config/sublime-text/Packages/phpfmt/phpfmt.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 88,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								67,
+								67
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JSON/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 45.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 86.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"controller",
+				"app/Http/Controllers/Controller.php"
+			],
+			[
+				"web.php",
+				"routes/web.php"
+			],
+			[
+				"web",
+				"webpack.config.js"
+			],
+			[
+				"profile.v",
+				"resources/js/Pages/Website/UserDashboard/Profile/profile.vue"
+			],
+			[
+				"profile",
+				"node_modules/@iconify-icons/ant-design/profile.js"
+			],
+			[
+				"showcarde",
+				"resources/js/components/showCarDetailsSliderAndImage.vue"
+			],
+			[
+				"showcar",
+				"resources/js/components/showCarDetails.vue"
+			],
+			[
+				"boots",
+				"resources/js/bootstrap.js"
+			],
+			[
+				"home/index",
+				"resources/js/Pages/Website/home/index.vue"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 338.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
