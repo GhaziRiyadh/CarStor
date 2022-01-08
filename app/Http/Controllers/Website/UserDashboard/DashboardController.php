@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website\UserDashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Car;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -17,12 +18,11 @@ class DashboardController extends Controller
     }
 
     public function index(){
-        // ddd(User::with('photo')->find(Auth::user()->id));
         $user = User::with('photo')->find(Auth::user()->id);
-        // ddd($user);
         $props = [
             'Auth' => Auth::check(),
             'user' => $user,
+            'show' => Car::with('carPhotos')->get()
         ];
         return Inertia::render('Website/UserDashboard/index',$props);
     }

@@ -28,7 +28,7 @@ class CreateCarsTable extends Migration
             $table->char('drive_type', 255);
             $table->char('fual_type', 255);
             $table->integer('seats_num');
-            $table->dateTime('date');
+            $table->date('date');
             $table->timestamps();
         });
     }

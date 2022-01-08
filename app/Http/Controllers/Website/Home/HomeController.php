@@ -23,7 +23,7 @@ class HomeController extends Controller
         $firstModels = $tabs[0]['model'];
         $props = [
             'Auth' => Auth::check(),
-            'user' => User::with('photo')->find(Auth::id()),
+            'user' => User::with('photo')->find(Auth::id()) or [],
             'cart' => $this->getCartData($firstModels),
             'hoverCart' => $this->getHoverCardData(),
             'tabData' => $tabs,

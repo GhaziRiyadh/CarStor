@@ -9,14 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
-use Inertia\Response as InertiaResponse;
 
 class ProfileController extends Controller
 {
     public function update(Request $request, User $id)
     {
-        // dd($request->all());
-
         $request->validate([
             'name' => 'required',
             'username' => 'required',

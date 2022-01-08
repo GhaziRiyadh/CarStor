@@ -130,6 +130,7 @@ import JetCheckbox from "@/Jetstream/Checkbox.vue";
 import JetLabel from "@/Jetstream/Label.vue";
 import JetValidationErrors from "@/Jetstream/ValidationErrors.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
+import { Inertia } from "@inertiajs/inertia";
 
 export default defineComponent({
   components: {
@@ -163,9 +164,25 @@ export default defineComponent({
           this.form.photo = v
       },
     submit() {
-    this.form.post(this.route("register"), {
+        Inertia.post(this.route("register"),this.form,{
+            onError: err => {
+                for (const key in err) {
+                    this.$toaster.error({
+                        title: key,
+                        desc: err[key]
+                    })
+                }
+            },
+            onSuccess: v => {
+                this.$toaster.success({
+                    title: 'Don\'e',
+                    desc: 'Thanks for contact us'
+                })
+            },
+        })
+    // this.form.post(this.route("register"), {
     // onFinish: () => this.form.reset("password", "password_confirmation"),
-    });
+    // });
     },
   },
 });

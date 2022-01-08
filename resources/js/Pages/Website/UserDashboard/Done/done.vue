@@ -3,11 +3,10 @@
         <!-- cards -->
         <section class="flex items-center justify-center w-full h-auto mt-[24px]">
             <div class="w-[80vw] h-auto grid lg:grid-cols-3 grid-cols-1 gap-6">
-                <CFcard done=true />
-                <CFcard done=true />
-                <CFcard done=true />
-                <CFcard done=true />
-                <CFcard done=true />
+                <CFcard :done='true' />
+                <CFcard :done='true' />
+                <CFcard :done='true' />
+                <CFcard :done='true' />
             </div>
         </section>
 

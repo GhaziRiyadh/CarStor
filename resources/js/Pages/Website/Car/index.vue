@@ -100,7 +100,6 @@ export default {
     //                 this.card = result.data.carData.data;
     //             })
     //             .catch(err => {
-    //                 console.log(err);
     //             });
     //     },
     addToCart(){

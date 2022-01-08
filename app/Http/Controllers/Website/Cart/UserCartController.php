@@ -16,9 +16,9 @@ class UserCartController extends Controller
     {
         if(Auth::check()){
                 $user = User::find(Auth::user()->id);
-                if (!$user->car()->exists($id)) {
+                // if (!$user->car()->exists($id)) {
                     $user->car()->attach($id);
-                }
+                // }
                 return response()->json([
                     'state' => $user->car()->exists($id),
                 ]);

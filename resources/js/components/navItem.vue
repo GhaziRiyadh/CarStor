@@ -47,7 +47,6 @@ export default {
   },
   created(){
       this.actives = this.active ? this.active : false;
-      console.log(this.actives,window.location.href)
   },
   methods:{
     hoverFun(type){

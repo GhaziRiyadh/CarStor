@@ -24,21 +24,7 @@
 	"buffers":
 	[
 		{
-			"contents": "<?php\n\nnamespace App\\Http\\Controllers;\n\nuse Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests;\nuse Illuminate\\Foundation\\Bus\\DispatchesJobs;\nuse Illuminate\\Foundation\\Validation\\ValidatesRequests;\nuse Illuminate\\Routing\\Controller as BaseController;\n\nclass Controller extends BaseController\n{\n    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;\n}\n",
 			"file": "app/Http/Controllers/Controller.php",
-			"file_size": 0,
-			"file_write_time": 132857899793760434,
-			"redo_stack":
-			[
-				[
-					32,
-					1,
-					"revert",
-					null,
-					"AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABpAQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
-				]
-			],
 			"settings":
 			{
 				"buffer_size": 361,
@@ -46,6 +32,14 @@
 			},
 			"undo_stack":
 			[
+				[
+					1,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAABpAQAAPD9waHAKCm5hbWVzcGFjZSBBcHBcSHR0cFxDb250cm9sbGVyczsKCnVzZSBJbGx1bWluYXRlXEZvdW5kYXRpb25cQXV0aFxBY2Nlc3NcQXV0aG9yaXplc1JlcXVlc3RzOwp1c2UgSWxsdW1pbmF0ZVxGb3VuZGF0aW9uXEJ1c1xEaXNwYXRjaGVzSm9iczsKdXNlIElsbHVtaW5hdGVcRm91bmRhdGlvblxWYWxpZGF0aW9uXFZhbGlkYXRlc1JlcXVlc3RzOwp1c2UgSWxsdW1pbmF0ZVxSb3V0aW5nXENvbnRyb2xsZXIgYXMgQmFzZUNvbnRyb2xsZXI7CgpjbGFzcyBDb250cm9sbGVyIGV4dGVuZHMgQmFzZUNvbnRyb2xsZXIKewogICAgdXNlIEF1dGhvcml6ZXNSZXF1ZXN0cywgRGlzcGF0Y2hlc0pvYnMsIFZhbGlkYXRlc1JlcXVlc3RzOwp9CgAAAAAAAAAAaQEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAJgAAAAAAAAAmAAAAAAAAAAAAAAAAAPC/"
+				]
 			]
 		},
 		{
@@ -64,7 +58,7 @@
 					"paste",
 					null,
 					"AgAAABsAAAAAAAAAKgAAAAAAAAAAAAAAKgAAAAAAAAAqAAAAAAAAABIAAAAvdXNyL2xvY2FsL2Jpbi9waHA",
-					"AQAAAAAAAAABAAAALQAAAAAAAAAbAAAAAAAAAAAAAAAAAPC/"
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAtAAAAAAAAABsAAAAAAAAAAAAAAAAA8L8"
 				]
 			]
 		}

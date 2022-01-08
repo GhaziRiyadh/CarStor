@@ -10,6 +10,7 @@
         <section class="flex items-center justify-center">
             <profile :userInfo="user" v-if="currentTabItem == 'Account info'" />
             <bankdata v-else-if="currentTabItem == 'Bank info'" />
+            <add-new :carData="show" v-else-if="currentTabItem == 'Add new'" />
             <done v-else />
         </section>
     </app-layout>
@@ -21,6 +22,7 @@
     import done from './Done/done.vue';
     import bankdata from './BankData/bankData.vue';
     import AppLayout from '@/Layouts/AppLayout.vue';
+import AddNew from './new/addNew.vue';
     export default{
         components:{
             tabs,
@@ -28,6 +30,7 @@
             done,
             bankdata,
             AppLayout,
+                AddNew,
         },
         props:{
             classesLayout:String,
@@ -44,6 +47,10 @@
                 type:Object,
                 default:{}
             },
+            show:{
+                type:Array,
+                default:[],
+            }
         },
         data(){
             return{
@@ -52,13 +59,13 @@
                 },
                 tabsData:{
                     type:Array,
-                    default:[{model:'Account info'} , {model:'Bank info'} , {model:'Buying secceeded'}]
+                    default:[{model:'Account info'} , {model:'Bank info'} , {model:'Buying secceeded'},  {model:'Add new'}]
                 }
             };
         },
         created(){
             this.currentTabItem = "Account info";
-            this.tabsData = [{model:'Account info'} , {model:'Bank info'} , {model:'Buying secceeded'}]
+            this.tabsData = [{model:'Account info'} , {model:'Bank info'} , {model:'Buying secceeded'},  {model:'Add new'}]
         },
         methods:{
             tabsFun(item){

@@ -1,5 +1,5 @@
 <template>
-    <app-layout :Auth="Auth" :userImage="user.image.image" :userName="user.name" >
+    <app-layout :Auth="Auth" :user="user" >
         <header class="h-[80px] w-full flex items-center justify-center">
             <tabs
                 :tabsFun="tabsFun"
@@ -21,6 +21,7 @@
     import done from './Done/done.vue';
     import bankdata from './BankData/bankData.vue';
     import AppLayout from '../../../Layouts/AppLayout.vue';
+import AddNew from './new/addNew.vue';
     export default{
         components:{
             tabs,
@@ -28,21 +29,18 @@
             done,
             bankdata,
             AppLayout,
+                AddNew,
         },
         props:{
             classesLayout:String,
             Auth:Boolean,
-            userImage:{
-                type:String,
-                default:'/images/person.jpg',
-            },
-            userName:{
-                type:String,
-                default:'Itsmy',
-            },
-            userInfo:{
+            user:{
                 type:Object,
                 default:{}
+            },
+            show:{
+                type:Array,
+                default:[],
             }
         },
         data(){
@@ -52,13 +50,12 @@
                 },
                 tabsData:{
                     type:Array,
-                    default:['Account info' , 'Bank info' , 'Buying secceeded']
+                    default:['Account info' , 'Bank info' , 'Buying secceeded' , 'Add new']
                 }
             };
         },
         created(){
             this.currentTabItem = "Account info";
-            this.tabsData = ['Account info' , 'Bank info' , 'Buying secceeded'];
         },
         methods:{
             tabsFun(item){

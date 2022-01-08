@@ -103,10 +103,10 @@ export default {
     };
   },
   created() {
+      console.log(this.user)
     this.active = this.activeItem = this.imageClick = this.cartHover = this.favoriteHover = this.logoutHover = this.profileHover =false;
     this.selfUrl = window.location.href;
-    this.userData = this.user.length > 0 ? this.user : usePage().props.value.user
-    console.log(this.userData)
+    this.userData = this.user.length > 0 ? this.user : {photo:{image:''}}
   },
   methods: {
     hoverFun(action, activeItem) {

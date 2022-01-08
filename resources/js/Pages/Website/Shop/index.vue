@@ -113,11 +113,9 @@ export default {
             axios.post(route('getcardata'),form).then((result) => {
                 this.card = result.data.carData.data;
             }).catch((err) => {
-                console.log(err);
             });
         },
         chose(v){
-        	console.log(v)
         },
   },
 };

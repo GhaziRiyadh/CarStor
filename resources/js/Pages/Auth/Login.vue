@@ -67,6 +67,7 @@
 
 					<jet-button
 						class="ml-4"
+                        type='submit'
 						:class="{ 'opacity-25': form.processing }"
 						:disabled="form.processing"
 					>
@@ -88,6 +89,7 @@
     import JetLabel from '@/Jetstream/Label.vue'
     import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
+    import { Inertia } from '@inertiajs/inertia'
 
     export default defineComponent({
         components: {
@@ -119,9 +121,22 @@
 
         methods: {
             submit() {
-                this.form.post(this.route("login"), {
-                    // onFinish: () => this.form.reset("password", "password_confirmation"),
-                });
+                Inertia.post(this.route("login"),this.form,{
+                    onError: err => {
+                        for (const key in err) {
+                            this.$toaster.error({
+                                title: key,
+                                desc: err[key]
+                            })
+                        }
+                    },
+                    onSuccess: v => {
+                        this.$toaster.success({
+                            title: 'Don\'e',
+                            desc: 'Thanks for contact us'
+                        })
+                    },
+                })
                     // .transform(data => ({
                     //     ... data,
                     //     remember: this.form.remember ? 'on' : ''

@@ -15,6 +15,23 @@ class Car extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'brand' ,
+        'vin' ,
+        'year',
+        'style' ,
+        'color' ,
+        'gear' ,
+        'gear_type' ,
+        'cylinder' ,
+        'cost' ,
+        'price' ,
+        'drive_type' ,
+        'fual_type' ,
+        'seats_num' ,
+        'date' ,
+    ];
+
     /**
      * Get the carPhotos that owns the Car
      *

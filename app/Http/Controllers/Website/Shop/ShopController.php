@@ -26,7 +26,7 @@ class ShopController extends Controller
         $props = [
             'Auth' => Auth::check(),
             'carData' => $carData,
-            'user' => User::with('photo')->find(Auth::id()),
+            'user' => User::with('photo')->find(Auth::id()) or [],
             'pages' => $carData->lastPage(),
             'colorOptions' => Car::distinct('color')->get('color'),
             'brandOptions' => Car::distinct('brand')->get('brand'),
@@ -82,7 +82,7 @@ class ShopController extends Controller
             'carData' => $cars,
             'Auth' => Auth::check(),
             'pages' => $cars->lastPage(),
-            'user' => User::with('photo')->find(Auth::id()),
+            'user' => User::with('photo')->find(Auth::id()) or [],
             'issearch' => $search,
         ];
         return Inertia::render('Website/Shop/index', $props);

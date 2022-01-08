@@ -1,5 +1,5 @@
 <template>
-    <app-layout :Auth="Auth">
+    <app-layout :user="user" :Auth="Auth">
         <!-- cards -->
         <section class="flex items-center justify-center w-full h-auto mt-[24px]">
             <div class="w-[80vw] h-auto grid lg:grid-cols-3 grid-cols-1 gap-6">
@@ -32,6 +32,10 @@ export default {
     },
     props:{
         Auth:Boolean,
+        user:{
+            type:Object,
+            default:{}
+        }
     },
 }
 </script>
